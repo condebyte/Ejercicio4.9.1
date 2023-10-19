@@ -2,7 +2,6 @@ package com.example.ejercicio491
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import com.example.ejercicio491.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     fun setData(){
 
-        binding.ListChuches.adapter = ChuchesAdapter(this)
+
 
 
 
@@ -34,5 +33,8 @@ class MainActivity : AppCompatActivity() {
         chuchesArray.add(chuches("caramelos 5",R.drawable.ic_launcher_background))
         chuchesArray.add(chuches("caramelos 6",R.drawable.ic_launcher_background))
         chuchesArray.add(chuches("caramelos 7",R.drawable.ic_launcher_background))
+
+        binding.ListChuches.adapter = ChuchesAdapter(this,chuchesArray)
+
     }
 }

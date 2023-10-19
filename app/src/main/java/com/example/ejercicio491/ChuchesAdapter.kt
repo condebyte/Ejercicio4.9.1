@@ -8,13 +8,15 @@ import android.widget.BaseAdapter
 import com.example.ejercicio491.databinding.ChuchesItemBinding
 
 class ChuchesAdapter:BaseAdapter {
-    private val context: Context
-    constructor(context: Context){
+     val context: Context
+     val chuchesArray: ArrayList<chuches>
+    constructor(context: Context, chuchesArray: ArrayList<chuches>){
         this.context = context
+        this.chuchesArray = chuchesArray
 
     }
     override fun getCount(): Int {
-        return 10
+        return this.chuchesArray.size
     }
 
     override fun getItem(p0: Int): Any {
@@ -25,11 +27,15 @@ class ChuchesAdapter:BaseAdapter {
         return p0.toLong()
     }
 
-    override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
+    override fun getView(position: Int, p1: View?, p2: ViewGroup?): View {
         val inflator = context!!.getSystemService(
             Context.LAYOUT_INFLATER_SERVICE
         ) as LayoutInflater
         val binding = ChuchesItemBinding.inflate(inflator)
+        val chuches = this.chuchesArray.get(position)
+
+        binding.textView.setText(chuches.name)
+        binding.imageView.setImageResource(chuches.icon)
 
         return binding.root
 
